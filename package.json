@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/mene2022/api-biblioth-que#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "debug": "^4.3.4",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.1",
     "pg": "^8.11.1"
   },
   "devDependencies": {

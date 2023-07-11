@@ -75,6 +75,15 @@ class CoreDatamapper {
     const count = parseInt(result.rows[0].count);
     return count;
   }
+
+  async isUnique(column, value) {
+    const preparedQuer = {
+      text: `SELECT * FROM "${this.tableName}" WHERE ${column} =$1`,
+      values: [value],
+    };
+    const res = await this.client.query(preparedQuer);
+    return res.rows[0];
+  }
 }
 
 module.exports = CoreDatamapper;
