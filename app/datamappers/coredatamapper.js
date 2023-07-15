@@ -84,6 +84,18 @@ class CoreDatamapper {
     const res = await this.client.query(preparedQuer);
     return res.rows[0];
   }
+
+  async findByEmeail(email) {
+    const preparedQuery = {
+      text: `SELECT * FROM "${this.tableName}" WHERE "user_email"=$1`,
+      values: [email],
+    };
+    const result = await this.client.query(preparedQuery);
+    if (!result) {
+      return null;
+    }
+    return result.rows[0];
+  }
 }
 
 module.exports = CoreDatamapper;

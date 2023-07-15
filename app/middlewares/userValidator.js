@@ -1,3 +1,4 @@
+const ValidationError = require('../error/validationError');
 // eslint-disable-next-line consistent-return
 const userValidator = (schema) => async (req, res, next) => {
   try {
@@ -6,7 +7,7 @@ const userValidator = (schema) => async (req, res, next) => {
     await schema.validateAsync(data);
     next();
   } catch (error) {
-    return res.status(400).json({ message: 'Données invalides' });
+    next(new ValidationError(error.details[0].message));
   }
 };
 
