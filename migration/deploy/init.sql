@@ -7,7 +7,7 @@ CREATE TYPE user_role AS ENUM ('utilisateur', 'admin');
 CREATE TABLE "author"
 ("id"  INT PRIMARY KEY  GENERATED ALWAYS AS IDENTITY,
  "author_name" TEXT NOT NULL,
- "author_dob" TIMESTAMP NOT NULL,
+"author_dob" DATE NOT NULL,
  "author_nationality" TEXT NOT NULL,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
   "updated_at" TIMESTAMPTZ

@@ -14,7 +14,6 @@ module.exports = {
 
     const emailIsUnique = await userDataMapper.isUnique('user_email', data.user_email);
     if (emailIsUnique) {
-      // return res.status(409).json({ message: `L'email ${data.user_email} existe déjà` });
       throw new ResourceConflictError(`L'email ${data.user_email} existe déjà`);
     }
     const passwordH = await bcrypt.hashPassword(data.user_password);
@@ -23,7 +22,7 @@ module.exports = {
     const newUser = await userDataMapper.create(data);
     // créer un jwt et le retourner
     const token = jwt.sign({ userId: newUser.id }, process.env.JWTSECRET, { expiresIn: '1h' });
-    return res.json({ userId: newUser.id, token });
+    return res.status(201).json({ userId: newUser.id, token });
   },
 
   async login(req, res) {
