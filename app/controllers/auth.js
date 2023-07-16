@@ -29,7 +29,6 @@ module.exports = {
   async login(req, res) {
     // eslint-disable-next-line camelcase
     const { user_email, user_password } = req.body;
-
     const user = await userDataMapper.findByEmeail(user_email);
 
     if (!user) {

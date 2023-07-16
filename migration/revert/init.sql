@@ -3,7 +3,7 @@
 BEGIN;
 
 
-DROP TABLE "loan","comment","ratings","book_gender","gender","book", "user", "author";
+DROP TABLE "loan","comment","rating","book_gender","gender","book", "user", "author";
 DROP TYPE  user_role ;
 
 

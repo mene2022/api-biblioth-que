@@ -6,7 +6,7 @@ const userSchema = Joi.object({
     .required(),
   user_email: Joi.string().email().required(),
   user_password: Joi.string().min(6).required(),
-  user_role: Joi.string().valid('admin', 'user').required(),
+  user_role: Joi.string().valid('admin', 'utilisateur').required(),
 });
 
 module.exports = userSchema;

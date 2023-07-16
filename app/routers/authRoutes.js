@@ -5,10 +5,10 @@ const controllerWrapper = require('../middlewares/wrapperController');
 const router = express.Router();
 const auth = require('../controllers/auth');
 const userCreateSchema = require('../schemas/userCreateSchema');
-const userValidator = require('../middlewares/userValidator');
+const validator = require('../middlewares/validator');
 const userLogin = require('../schemas/userLoginSchema');
 
-router.post('/signup', userValidator(userCreateSchema), controllerWrapper(auth.signup)); // userValidator(userCreateSchema),
-router.post('/login', userValidator(userLogin), controllerWrapper(auth.login));
+router.post('/signup', validator(userCreateSchema), controllerWrapper(auth.signup)); // userValidator(userCreateSchema),
+router.post('/login', validator(userLogin), controllerWrapper(auth.login));
 
 module.exports = router;
