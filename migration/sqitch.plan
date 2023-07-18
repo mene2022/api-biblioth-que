@@ -2,3 +2,4 @@
 %project=bib
 
 init 2023-07-10T12:03:22Z elhadj <elhadjmene@gmail.com> # les tables de la bbd
+status_column 2023-07-18T11:17:35Z elhadj <elhadjmene@gmail.com> # ajout status à la table loan

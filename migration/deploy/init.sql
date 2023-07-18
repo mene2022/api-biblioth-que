@@ -25,6 +25,7 @@ CREATE TABLE "author"
 
  CREATE TABLE "book" 
 ("id"  INT PRIMARY KEY  GENERATED ALWAYS AS IDENTITY,
+ "title" TEXT NOT NULL,
  "book_summary" TEXT NOT NULL,
  "publication_year" INT NOT NULL,
  "author_id" INT NOT NULL REFERENCES "author"("id"),
