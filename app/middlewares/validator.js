@@ -1,6 +1,6 @@
 const ValidationError = require('../error/validationError');
 // eslint-disable-next-line consistent-return
-const userValidator = (schema) => async (req, res, next) => {
+const validator = (schema) => async (req, res, next) => {
   try {
     const data = req.body;
 
@@ -11,4 +11,4 @@ const userValidator = (schema) => async (req, res, next) => {
   }
 };
 
-module.exports = userValidator;
+module.exports = validator;

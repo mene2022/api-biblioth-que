@@ -6,6 +6,7 @@ const genderRoutes = require('./genderRoutes');
 const bookRoutes = require('./bookRoutes');
 const bookGenderRoutes = require('./bookGenderRoutes');
 const ratingRoutes = require('./raitingRoutes');
+const loanRoutes = require('./loanRoutes');
 const errorHandler = require('../utils/errorHandler');
 
 const router = express.Router();
@@ -17,5 +18,6 @@ router.use('/genders', genderRoutes);
 router.use('/books', bookRoutes);
 router.use('/book-genders', bookGenderRoutes);
 router.use('/ratings', ratingRoutes);
+router.use('/loans', loanRoutes);
 router.use(errorHandler);
 module.exports = router;
