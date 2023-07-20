@@ -66,4 +66,25 @@ module.exports = {
       message: 'Le prêt a été supprimé avec succé',
     });
   },
+  async updateLoanById(req, res) {
+    const { id } = req.params;
+    const data = req.body; // données de mis à jour
+
+    // Vérifier si l id est bien un nombre valide
+    validateId(id);
+    //  Véfier l'existance du prêt avant le metttre à jour
+    // si aucun pret aavec l'id, renvoie un message d'erreur
+    await verifyExistence(Loandatamapper, id, 'Le prêt que tu veux mettre à jour n\'existe pas ');
+    const today = new Date().toISOString().split('T')[0];
+    if (data.status === 'returned' && data.return_date !== today) {
+      throw new ValidationError('La date du retour doit être la data du jour');
+    }
+    const loanUpdate = await Loandatamapper.update({ id }, data);
+
+    if (!loanUpdate) {
+      throw new DatabaseError('Erreur lors de la mise à jour');
+    }
+
+    return res.json(loanUpdate);
+  },
 };
