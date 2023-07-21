@@ -1,5 +1,5 @@
 const { DatabaseError } = require('pg');
-const RatingDatamapper = require('../datamappers/raiting.datamapper');
+const RatingDatamapper = require('../models/raiting.datamapper');
 const NotFoundError = require('../error/notFoundError');
 const validateId = require('../utils/validateId');
 

@@ -1,7 +1,7 @@
 const DatabaseError = require('../error/databaseError');
-const BookGenderDatamapper = require('../datamappers/bookGender.datamapper');
-const BookDatamapper = require('../datamappers/book.datamapper');
-const GenderDatamapper = require('../datamappers/gender.datamapper');
+const BookGenderDatamapper = require('../models/bookGender.datamapper');
+const BookDatamapper = require('../models/book.datamapper');
+const GenderDatamapper = require('../models/gender.datamapper');
 const NotFoundError = require('../error/notFoundError');
 const validateId = require('../utils/validateId');
 

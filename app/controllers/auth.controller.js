@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const jwt = require('jsonwebtoken');
 const bcrypt = require('../utils/bcrypt');
-const userDataMapper = require('../datamappers/user.datamapper');
+const userDataMapper = require('../models/user.datamapper');
 const ResourceConflictError = require('../error/ressourceConflictError');
 const NotFoundError = require('../error/notFoundError');
 

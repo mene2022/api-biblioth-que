@@ -1,6 +1,6 @@
 const DatabaseError = require('../error/databaseError');
 const ResourceConflictError = require('../error/ressourceConflictError');
-const GenderDatamapper = require('../datamappers/gender.datamapper');
+const GenderDatamapper = require('../models/gender.datamapper');
 const validateId = require('../utils/validateId');
 const NotFoundError = require('../error/notFoundError');
 

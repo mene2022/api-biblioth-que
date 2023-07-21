@@ -1,7 +1,7 @@
-const CommentDatamapper = require('../datamappers/comment.datamapper');
+const CommentDatamapper = require('../models/comment.datamapper');
 const validateId = require('../utils/validateId');
-const BookDatamapper = require('../datamappers/book.datamapper');
-const UserDatamapper = require('../datamappers/user.datamapper');
+const BookDatamapper = require('../models/book.datamapper');
+const UserDatamapper = require('../models/user.datamapper');
 const verifyExistance = require('../utils/verifyExistance');
 const DatabaseError = require('../error/databaseError');
 

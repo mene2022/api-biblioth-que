@@ -1,4 +1,4 @@
-const AuthorDatamapper = require('../datamappers/author.datamapper');
+const AuthorDatamapper = require('../models/author.datamapper');
 const validateId = require('../utils/validateId');
 const NotFoundError = require('../error/notFoundError');
 const DatabaseError = require('../error/databaseError');

@@ -1,4 +1,4 @@
-const userDatamapper = require('../datamappers/user.datamapper');
+const userDatamapper = require('../models/user.datamapper');
 const NotFoundError = require('../error/notFoundError');
 const validateId = require('../utils/validateId');
 const removeSensitiveData = require('../utils/removeSensitiveData');

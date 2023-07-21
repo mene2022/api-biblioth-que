@@ -1,8 +1,8 @@
 const { DatabaseError } = require('pg');
-const Loandatamapper = require('../datamappers/loan.datamapper');
+const Loandatamapper = require('../models/loan.datamapper');
 const NotFoundError = require('../error/notFoundError');
-const BookDatamapper = require('../datamappers/book.datamapper');
-const UserDatamapper = require('../datamappers/user.datamapper');
+const BookDatamapper = require('../models/book.datamapper');
+const UserDatamapper = require('../models/user.datamapper');
 const validateId = require('../utils/validateId');
 const verifyExistence = require('../utils/verifyExistance');
 const ValidationError = require('../error/validationError');
@@ -77,7 +77,7 @@ module.exports = {
     await verifyExistence(Loandatamapper, id, 'Le prêt que tu veux mettre à jour n\'existe pas ');
     const today = new Date().toISOString().split('T')[0];
     if (data.status === 'returned' && data.return_date !== today) {
-      throw new ValidationError('La date du retour doit être la data du jour');
+      throw new ValidationError('La date du retour doit être la date du jour');
     }
     const loanUpdate = await Loandatamapper.update({ id }, data);
 

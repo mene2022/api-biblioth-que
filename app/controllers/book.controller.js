@@ -1,5 +1,5 @@
 const { DatabaseError } = require('pg');
-const BookDatamapper = require('../datamappers/book.datamapper');
+const BookDatamapper = require('../models/book.datamapper');
 const NotFoundError = require('../error/notFoundError');
 const validateId = require('../utils/validateId');
 
