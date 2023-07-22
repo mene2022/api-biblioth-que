@@ -2,6 +2,7 @@ const userDatamapper = require('../models/user.datamapper');
 const NotFoundError = require('../error/notFoundError');
 const validateId = require('../utils/validateId');
 const removeSensitiveData = require('../utils/removeSensitiveData');
+const RessourceConflictError = require('../error/ressourceConflictError');
 
 module.exports = {
   async getUsers(req, res) {
@@ -23,11 +24,14 @@ module.exports = {
 
     return res.json(modifedUser);
   },
-  async unpdateUserById(req, res) {
+  async updateUserById(req, res) {
     const { id } = req.params;
-    const { ...inputData } = req.body;
-
     validateId(id);
+    const { ...inputData } = req.body;
+    const foudEmail = await userDatamapper.findByEmeail(inputData.user_email);
+    if (inputData.user_email && foudEmail) {
+      throw new RessourceConflictError('l email existe déja');
+    }
 
     const userUpdate = await userDatamapper.update({ id }, inputData);
     // eslint-disable-next-line camelcase

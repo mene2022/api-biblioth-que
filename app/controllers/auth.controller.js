@@ -13,6 +13,7 @@ module.exports = {
     const data = req.body;
 
     const emailIsUnique = await userDataMapper.isUnique('user_email', data.user_email);
+
     if (emailIsUnique) {
       throw new ResourceConflictError(`L'email ${data.user_email} existe déjà`);
     }
@@ -31,7 +32,7 @@ module.exports = {
     const user = await userDataMapper.findByEmeail(user_email);
 
     if (!user) {
-      throw new NotFoundError('Adresse e-mail non trouvée');
+      throw new NotFoundError('l utilsateur nexiste pas');
     }
     const passwordMatch = await bcrypt.comparePassword(user_password, user.user_password);
 

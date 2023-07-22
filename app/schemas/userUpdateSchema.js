@@ -6,6 +6,6 @@ const userUpdate = Joi.object({
   user_email: Joi.string().email(),
   user_password: Joi.string().min(6),
   user_role: Joi.string().valid('admin', 'utilisateur').allow(null, ''),
-});
+}).min(1);
 
 module.exports = userUpdate;

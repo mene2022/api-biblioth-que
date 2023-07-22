@@ -5,6 +5,6 @@ const bookSchemaUpdate = Joi.object({
   title: Joi.string().min(5),
   publication_year: Joi.number().integer().min(1900).max(new Date().getFullYear()),
 
-});
+}).min(1);
 
 module.exports = bookSchemaUpdate;

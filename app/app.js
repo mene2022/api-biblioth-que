@@ -1,6 +1,7 @@
 const express = require('express');
 const router = require('./routers/index');
 const applySwagger = require('./utils/apiDocs');
+const errorHandler = require('./utils/errorHandler');
 
 const app = express();
 // Appliquer Swagger à l'application Express
@@ -8,5 +9,6 @@ applySwagger(app);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
-// app.use(errorHandler);
+app.use(errorHandler);
+
 module.exports = app;

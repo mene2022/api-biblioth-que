@@ -5,6 +5,6 @@ const raitingSchemeupdate = Joi.object({
   book_id: Joi.number().integer(),
   rating: Joi.number().integer().min(1).max(5),
 
-});
+}).min(1);
 
 module.exports = raitingSchemeupdate;

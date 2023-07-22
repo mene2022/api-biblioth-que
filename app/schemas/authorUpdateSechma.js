@@ -5,6 +5,6 @@ const authorSchema = Joi.object({
   author_name: Joi.string(),
   author_nationality: Joi.string(),
   author_dob: Joi.date(),
-});
+}).min(1);
 
 module.exports = authorSchema;

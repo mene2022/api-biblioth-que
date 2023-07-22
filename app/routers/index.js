@@ -8,7 +8,7 @@ const bookGenderRoutes = require('./bookGenderRoutes');
 const ratingRoutes = require('./raitingRoutes');
 const loanRoutes = require('./loanRoutes');
 const commentRoutes = require('./commentRoutes');
-const errorHandler = require('../utils/errorHandler');
+// const errorHandler = require('../utils/errorHandler');
 const NotFoundError = require('../error/notFoundError');
 
 const router = express.Router();
@@ -31,5 +31,5 @@ router.use('/comments', commentRoutes);
 router.use(() => {
   throw new NotFoundError('La route n existe pas');
 });
-router.use(errorHandler);
+// router.use(errorHandler);
 module.exports = router;
