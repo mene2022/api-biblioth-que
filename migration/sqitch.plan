@@ -3,3 +3,4 @@
 
 init 2023-07-10T12:03:22Z elhadj <elhadjmene@gmail.com> # les tables de la bbd
 status_column 2023-07-18T11:17:35Z elhadj <elhadjmene@gmail.com> # ajout status à la table loan
+add_constraint 2023-07-27T09:51:52Z elhadj <elhadjmene@gmail.com> # ajouter on deletecascade

@@ -1,6 +1,7 @@
 const { DatabaseError } = require('pg');
 const BookDatamapper = require('../models/book.datamapper');
 const NotFoundError = require('../error/notFoundError');
+const ResourceConflictError = require('../error/ressourceConflictError');
 const validateId = require('../utils/validateId');
 
 module.exports = {
@@ -23,6 +24,16 @@ module.exports = {
   },
   async addBook(req, res) {
     const data = req.body;
+
+    // on vérifie si le livre existe déja
+    // eslint-disable-next-line max-len
+    const foundBook = await BookDatamapper.bookExists(data.book_summary, data.title, data.publication_year, data.author_id);
+    // s'il existe on envoie un message
+    if (foundBook) {
+      throw new ResourceConflictError('Le livre existe déjà');
+    }
+
+    // crération de nouveau livre
     const newBook = await BookDatamapper.create(data);
     if (!newBook) {
       throw new DatabaseError('Error lors de l\'insertion de livre');

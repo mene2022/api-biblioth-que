@@ -31,6 +31,10 @@ module.exports = {
     if (!genderFound) {
       throw NotFoundError(`le genre avec l'id :${id} n'existe pas `);
     }
+    const genderIsUnique = await GenderDatamapper.isUnique('gender_name', data.gender_name);
+    if (genderIsUnique) {
+      throw new ResourceConflictError('le genre existe déja');
+    }
 
     const updateGender = await GenderDatamapper.update({ id }, data);
     if (!updateGender) {
@@ -52,10 +56,21 @@ module.exports = {
   async deleteGenderById(req, res) {
     const { id } = req.params;
     validateId(id);
+    // on vérifie si le genre existe
     const foundGender = await GenderDatamapper.findByPk(id);
+    // s'il existe pas on n'envoie un message d'erreur
     if (!foundGender) {
       throw new NotFoundError('le genre n\'existe pas pas');
     }
+    // on vérifie si le genre est liée à un ou plusieus livre
+    const isRelatedToBook = await GenderDatamapper.isGenreRelatedToBook(id);
+
+    // s'il est liéee à un livre ou plus
+    if (isRelatedToBook) {
+      throw new ResourceConflictError(`Le genre avec l'id ${id} est lié à un ou plusieurs livres et ne peut pas être supprimé`);
+    }
+
+    // on supprime le genre
     const result = await GenderDatamapper.delete(id);
     if (!result) {
       throw new DatabaseError('Error suvenu lors de la suppression');
